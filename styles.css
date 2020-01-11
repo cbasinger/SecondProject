@@ -1,0 +1,10 @@
+body {
+    align-items: center !important;
+}
+
+.card {
+    flex: content;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between !important;
+}
