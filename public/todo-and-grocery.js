@@ -1,6 +1,43 @@
 var api_url = 'http://localhost:3000/';
 var toDoContainer= document.getElementById("toDoContainer");
 var groceryContainer = document.getElementById("groceryContainer");
+var toDoList = document.getElementById("toDoList");
+var groceryList = document.getElementById("groceryList");
+
+var createSubmitButton = function (listType) {
+    let submitDiv = document.createElement("div");
+    submitDiv.className = "row";
+    submitDiv.id = listType + " submitButtonDiv";
+    let submitButtonColumn = document.createElement("div");
+    submitButtonColumn.className = "col-sm-1";
+    let submitButton = document.createElement("button");
+    submitButton.type = "button";
+    submitButton.innerHTML = "Submit";
+
+    if(listType == "ToDoList"){
+        submitButton.id = "ToDoListSubmitButton"
+    }
+    else if(listType == "GroceryList"){
+        submitButton.id = "GroceryListSubmitButton"
+    }
+    
+    submitButtonColumn.appendChild(submitButton);
+    submitDiv.appendChild(submitButtonColumn);
+    
+    let inputAreaColumn = document.createElement("div");
+    inputAreaColumn.className = "col-sm-11";
+    let inputArea = document.createElement("input");
+    inputArea.type = "text";
+    inputAreaColumn.appendChild(inputArea);
+    submitDiv.appendChild(inputAreaColumn)
+
+    if(listType == "ToDoList"){
+        toDoList.appendChild(submitDiv);
+    }
+    else if(listType == "GroceryList"){
+        groceryList.appendChild(submitDiv);
+    }
+}
 
 var createListItem = function (item, listType) {
     let container = document.createElement("div");
@@ -40,6 +77,8 @@ var getToDoList = function () {
             for (i=0; i< allToDos.length; i++){
                 createListItem(allToDos[i], "ToDoList");
             }
+            createSubmitButton("ToDoList");
+
         })
         .catch(function(error) {
             console.log(error)
@@ -53,6 +92,7 @@ var getGroceryList = function(){
             for (i=0; i< allGroceryList.length; i++){
                 createListItem(allGroceryList[i], "GroceryList");
             }
+            createSubmitButton("GroceryList");
         })
         .catch(function(error) {
             console.log(error)
