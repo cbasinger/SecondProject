@@ -3,13 +3,8 @@ body {
 }
 
 .card {
-    align-items: center !important;
-}
-
-.card-group {
     flex: content;
     flex-wrap: wrap;
     flex-direction: column;
-    margin-left: 10px !important;
-    margin-right: 10px !important;
+    justify-content: space-between !important;
 }
