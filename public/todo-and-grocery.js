@@ -3,6 +3,8 @@ var toDoContainer= document.getElementById("toDoContainer");
 var groceryContainer = document.getElementById("groceryContainer");
 var toDoList = document.getElementById("toDoList");
 var groceryList = document.getElementById("groceryList");
+var toDoListLength = 0;
+var groceryListLength = 0;
 
 var createSubmitButton = function (listType) {
     let submitDiv = document.createElement("div");
@@ -52,11 +54,12 @@ var createListItem = function (item, listType) {
     checkBox.type = "checkbox";
     checkBoxColumn.appendChild(checkBox);
     container.appendChild(checkBoxColumn);
-    
     let ItemColumn = document.createElement("div");
     ItemColumn.className = "col-sm-11";
 
     if (listType == "ToDoList"){
+        checkBox.id = "ToDocheckbox " + toDoListLength;
+        toDoListLength ++;
         let toDoItem = document.createElement("p");
         toDoItem.innerHTML = item.todoitem;
         ItemColumn.appendChild(toDoItem);
@@ -65,6 +68,8 @@ var createListItem = function (item, listType) {
     }
 
     else if (listType == "GroceryList") {
+        checkBox.id = "Grocerycheckbox " + groceryListLength;
+        groceryListLength ++;
         let groceryItem = document.createElement("p");
         groceryItem.innerHTML = item.groceryitem;
         ItemColumn.appendChild(groceryItem);
@@ -80,6 +85,7 @@ var getToDoList = function () {
             for (i=0; i< allToDos.length; i++){
                 createListItem(allToDos[i], "ToDoList");
             }
+            deleteFunction();
         })
         .catch(function(error) {
             console.log(error)
@@ -93,6 +99,7 @@ var getGroceryList = function(){
             for (i=0; i< allGroceryList.length; i++){
                 createListItem(allGroceryList[i], "GroceryList");
             }
+            deleteFunction();
         })
         .catch(function(error) {
             console.log(error)
@@ -144,3 +151,20 @@ GroceryListSubmitButton.onclick = function (){
          });
     }    
 }
+
+var deleteFunction = function () {
+    console.log(toDoListLength);
+    for (i=0; i< toDoListLength.length; i++){
+        //console.log("ToDocheckbox " + i);
+        if (document.getElementById("ToDocheckbox " + i).checked = true){
+            console.log(i);
+        }
+    }
+    for (i=0; i< groceryListLength.length; i++){
+        if (document.getElementById("Grocerycheckbox " + i).checked = true){
+            console.log(i);
+        }
+    }
+}
+
+deleteFunction();

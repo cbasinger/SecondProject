@@ -13,7 +13,6 @@ dotenv.config();
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/config/config.json')[env];
 
-
 let sequelize;
 if (process.env.DATABASE_URL) {
     sequelize = new Sequelize(process.env.DATABASE_URL);
@@ -89,6 +88,17 @@ app.post('/api/grocery', function (req, res) {
     });
 });
 
+
+
+
+
+// app.destroy('/api/todo', function (req, res) {
+//     where: {
+//       status: 'inactive'
+//     }
+//   });
+//   // DELETE FROM post WHERE status = 'inactive';
+  
 app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
