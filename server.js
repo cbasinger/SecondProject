@@ -6,27 +6,22 @@ const path = require('path');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 
-const config = {
-	host: 'localhost',
-	port: 3000,
-	database: 'before-you-leave',
-	username: 'postgres',
-	password: '$1lagoat'
- };
+dotenv.config();
 
-const sequelize = new Sequelize('before-you-leave', 'postgres', '', {
-    host: 'localhost',
-    dialect: 'postgres',
-    password: '$1lagoat',
-    pool: {
-      max: 10,
-      min: 0,
-      acquire: 30000,
-      idle: 10000
-    }
-})
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/config/config.json')[env];
 
+
+let sequelize;
+if (process.env.DATABASE_URL) {
+    sequelize = new Sequelize(process.env.DATABASE_URL);
+} else if (config.use_env_variable) {
+    sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+    sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
 
 var app = express();
 
@@ -94,7 +89,7 @@ app.post('/api/grocery', function (req, res) {
     });
 });
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
 
