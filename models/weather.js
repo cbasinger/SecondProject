@@ -18,9 +18,9 @@ req.headers({
 req.end(function (res) {
 	if (res.error) throw new Error(res.error);
 
-	console.log(res.body);
+	console.log(res.body.currently.summary);
 });
 
-app.listen(3000, () => {
+/* app.listen(3000, () => {
     console.log('Listening on port :3000');
-})
+}) */

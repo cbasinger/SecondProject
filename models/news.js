@@ -11,8 +11,11 @@ req.query({
     country: 'us'
 });
 
-req.end(function (res) {
-	if (res.error) throw new Error(res.error);
 
-	console.log(res.body);
+
+req.end(function (res) {
+    if (res.error) throw new Error(res.error)
+    
+
+	console.log(res.body.articles[0]);
 });
