@@ -41,7 +41,7 @@ var createSubmitButton = function (listType) {
 
 var createListItem = function (item, listType) {
     let container = document.createElement("div");
-    container.id = listType + "Element " + item.id;
+    container.id = listType + "Element" + item.id;
     container.className = "row";
     let checkBoxColumn = document.createElement("div");
     checkBoxColumn.className = "col-sm-1";
