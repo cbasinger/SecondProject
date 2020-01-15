@@ -65,8 +65,6 @@ app.post('/api/todo', function (req, res) {
         todoitem: req.body.todoitem
     };
     Todo.create(data).then(function (results) {
-        console.log(req.body);
-        console.log(data);
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(results));
     })
@@ -88,41 +86,37 @@ app.post('/api/grocery', function (req, res) {
     });
 });
 
-
-
-
-
-// app.destroy('/api/todo', function (req, res) {
-//     where: {
-//       status: 'inactive'
-//     }
-//   });
-//   // DELETE FROM post WHERE status = 'inactive';
+app.delete('/api/todo/:id', function (req, res) {
+    let id = req.params.id;
+    Todo.destroy({
+        where: {
+            id: id
+        }
+    }).then(function (results) {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(results));
+        console.log(results);
+    })
+	.catch((e) => {
+        console.error(e);
+    });
+});
   
+app.delete('/api/grocery/:id', function (req, res) {
+    let id = req.params.id;
+    Grocery.destroy({
+        where: {
+            id: id
+        }
+    }).then(function (results) {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(results));
+    })
+	.catch((e) => {
+        console.error(e);
+    });
+});
+
 app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
-
-
-    
-//const bodyParser = require('body-parser');
-// const pgp = require('pg-promise')();
-// const db = pgp(process.env.DATABASE_URL || config);
-// var cors = require('cors')
-
-
-/////////////////////
-//const PostsModel = require('./models/posts')
-
-
-// const connectionString = `postgres://${config.username}:${config.password}@${config.host}:${config.port}/${config.database}`
-// 
-
-
-
-///// Models
-//const Comments = CommentsModel(sequelize, Sequelize);
-
-//Joins
-//Users.hasMany(Posts, {foreignKey: 'user_id'})
-

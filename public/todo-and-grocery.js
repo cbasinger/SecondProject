@@ -3,8 +3,6 @@ var toDoContainer= document.getElementById("toDoContainer");
 var groceryContainer = document.getElementById("groceryContainer");
 var toDoList = document.getElementById("toDoList");
 var groceryList = document.getElementById("groceryList");
-var toDoListLength = 0;
-var groceryListLength = 0;
 
 var createSubmitButton = function (listType) {
     let submitDiv = document.createElement("div");
@@ -44,7 +42,7 @@ var createSubmitButton = function (listType) {
     }
 }
 
-var createListItem = function (item, listType) {
+var createListItem = function (item, listType, listItemId) {
     let container = document.createElement("div");
     container.id = listType + "Element " + item.id;
     container.className = "row";
@@ -58,8 +56,8 @@ var createListItem = function (item, listType) {
     ItemColumn.className = "col-sm-11";
 
     if (listType == "ToDoList"){
-        checkBox.id = "ToDocheckbox " + toDoListLength;
-        toDoListLength ++;
+        checkBox.id = "ToDocheckbox " + listItemId;
+        checkBox.addEventListener('click', toDoDeleteFunction);
         let toDoItem = document.createElement("p");
         toDoItem.innerHTML = item.todoitem;
         ItemColumn.appendChild(toDoItem);
@@ -68,8 +66,8 @@ var createListItem = function (item, listType) {
     }
 
     else if (listType == "GroceryList") {
-        checkBox.id = "Grocerycheckbox " + groceryListLength;
-        groceryListLength ++;
+        checkBox.id = "Grocerycheckbox " + listItemId;
+        checkBox.addEventListener('click', groceryDeleteFunction);
         let groceryItem = document.createElement("p");
         groceryItem.innerHTML = item.groceryitem;
         ItemColumn.appendChild(groceryItem);
@@ -83,9 +81,8 @@ var getToDoList = function () {
         .then(function(data) {
             let allToDos = data.data;
             for (i=0; i< allToDos.length; i++){
-                createListItem(allToDos[i], "ToDoList");
+                createListItem(allToDos[i], "ToDoList", allToDos[i].id);
             }
-            deleteFunction();
         })
         .catch(function(error) {
             console.log(error)
@@ -97,9 +94,8 @@ var getGroceryList = function(){
         .then(function(data) {
             let allGroceryList = data.data;
             for (i=0; i< allGroceryList.length; i++){
-                createListItem(allGroceryList[i], "GroceryList");
+                createListItem(allGroceryList[i], "GroceryList", allGroceryList[i].id);
             }
-            deleteFunction();
         })
         .catch(function(error) {
             console.log(error)
@@ -152,19 +148,36 @@ GroceryListSubmitButton.onclick = function (){
     }    
 }
 
-var deleteFunction = function () {
-    console.log(toDoListLength);
-    for (i=0; i< toDoListLength.length; i++){
-        //console.log("ToDocheckbox " + i);
-        if (document.getElementById("ToDocheckbox " + i).checked = true){
-            console.log(i);
-        }
-    }
-    for (i=0; i< groceryListLength.length; i++){
-        if (document.getElementById("Grocerycheckbox " + i).checked = true){
-            console.log(i);
-        }
-    }
-}
+var toDoDeleteFunction = function () {
+    var str = this.id;
+    var res = str.slice(12, str.length);
+    var index = parseInt(res, 10)
 
-deleteFunction();
+    axios.delete(api_url + `api/todo/${index}`)
+        .then(function(result) {
+            toDoContainer.innerHTML="";
+            getToDoList();
+        })        
+        .catch(function(error) {
+            console.log(error)
+            //Code for handling errors
+        });
+}   
+
+var groceryDeleteFunction = function () {
+    var str = this.id;
+    var res = str.slice(15, str.length);
+    var index = parseInt(res, 10)
+
+    axios.delete(api_url + `api/grocery/${index}`)
+        .then(function(result) {
+            groceryContainer.innerHTML="";
+            getGroceryList();
+        })        
+        .catch(function(error) {
+            console.log(error)
+            //Code for handling errors
+        });
+}     
+
+
