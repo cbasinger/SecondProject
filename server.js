@@ -27,10 +27,8 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
-const unirest = require('unirest');
-const newsAPI = require('newsapi');
-const req1 = unirest("GET", "https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db");
-const req2 = unirest("GET", "https://dark-sky.p.rapidapi.com/33.9526,-84.5499");
+
+
 
 dotenv.config();
 
@@ -144,53 +142,4 @@ app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
 
-//NEWS
-req1.query({
-    language: 'en',
-    country: 'us'
-});
-function getNews() {
-    req1.end(function (res) {
-        const newsObject = {};
-        newsObject.name = "Top Headlines";
-        newsObject.title = res.body.articles[0].title;
-        newsObject.source = res.body.articles[0].source;
-        newsObject.description = res.body.articles[0].description;
-        newsObject.content = res.body.articles[0].content;
-        newsObject.date = res.body.articles[0].publishedAt;
-    
-        News.push(newsObject);
-        newsCard.appendChild(News);
-    });
-    };
-    getNews();
 
-//WEATHER
-req2.query({
-	"lang": "en",
-    "units": "auto",
-    "exclude": "minutely%2C hourly%2C daily%2C flags"
-});
-req.headers({
-	"x-rapidapi-host": "dark-sky.p.rapidapi.com",
-	"x-rapidapi-key": "8fcd0baf41msh43380c9a5223fd7p18e2c5jsn53d5da255ddd"
-});
-
-
-
-function getWeather(){
-req2.end(function (res) {
-	const weatherObject = {};
-	weatherObject.name = "Local Weather";
-	weatherObject.currently = res.body.currently.summary;
-	weatherObject.temp = res.body.currently.temperature;
-	weatherObject.wind = res.body.currently.windSpeed;
-	weatherObject.alerts = res.body.alerts;
-
-	Weather.push(weatherObject);
-
-	
-    weatherCard.appendChild(Weather);
-});
-};
-getWeather();
