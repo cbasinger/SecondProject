@@ -1,4 +1,22 @@
 //const bcrypt = require('bcrypt');
+
+const { Client } = require('pg');
+
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+
+client.connect();
+
+client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
+  if (err) throw err;
+  for (let row of res.rows) {
+    console.log(JSON.stringify(row));
+  }
+  client.end();
+});
+
 const express = require('express')
 const passport = require('passport')
 const Sequelize = require('sequelize')
@@ -13,7 +31,6 @@ dotenv.config();
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/config/config.json')[env];
 
-
 let sequelize;
 if (process.env.DATABASE_URL) {
     sequelize = new Sequelize(process.env.DATABASE_URL);
@@ -23,7 +40,7 @@ if (process.env.DATABASE_URL) {
     sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-var app = express();
+const app = express();
 
 app.use(cookieParser())
 //app.use(session());
@@ -66,8 +83,6 @@ app.post('/api/todo', function (req, res) {
         todoitem: req.body.todoitem
     };
     Todo.create(data).then(function (results) {
-        console.log(req.body);
-        console.log(data);
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify(results));
     })
@@ -89,30 +104,37 @@ app.post('/api/grocery', function (req, res) {
     });
 });
 
+app.delete('/api/todo/:id', function (req, res) {
+    let id = req.params.id;
+    Todo.destroy({
+        where: {
+            id: id
+        }
+    }).then(function (results) {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(results));
+        console.log(results);
+    })
+	.catch((e) => {
+        console.error(e);
+    });
+});
+  
+app.delete('/api/grocery/:id', function (req, res) {
+    let id = req.params.id;
+    Grocery.destroy({
+        where: {
+            id: id
+        }
+    }).then(function (results) {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(results));
+    })
+	.catch((e) => {
+        console.error(e);
+    });
+});
+
 app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
-
-
-    
-//const bodyParser = require('body-parser');
-// const pgp = require('pg-promise')();
-// const db = pgp(process.env.DATABASE_URL || config);
-// var cors = require('cors')
-
-
-/////////////////////
-//const PostsModel = require('./models/posts')
-
-
-// const connectionString = `postgres://${config.username}:${config.password}@${config.host}:${config.port}/${config.database}`
-// 
-
-
-
-///// Models
-//const Comments = CommentsModel(sequelize, Sequelize);
-
-//Joins
-//Users.hasMany(Posts, {foreignKey: 'user_id'})
-

@@ -1,4 +1,4 @@
-var api_url = 'http://localhost:3000/';
+var api_url = process.env.DATABASE_URL;
 var toDoContainer= document.getElementById("toDoContainer");
 var groceryContainer = document.getElementById("groceryContainer");
 var toDoList = document.getElementById("toDoList");
@@ -13,22 +13,25 @@ var createSubmitButton = function (listType) {
     let submitButton = document.createElement("button");
     submitButton.type = "button";
     submitButton.innerHTML = "Submit";
-
-    if(listType == "ToDoList"){
-        submitButton.id = "ToDoListSubmitButton"
-    }
-    else if(listType == "GroceryList"){
-        submitButton.id = "GroceryListSubmitButton"
-    }
-    
-    submitButtonColumn.appendChild(submitButton);
-    submitDiv.appendChild(submitButtonColumn);
-    
     let inputAreaColumn = document.createElement("div");
     inputAreaColumn.className = "col-sm-11";
     let inputArea = document.createElement("input");
     inputArea.type = "text";
+    
+
+    if(listType == "ToDoList"){
+        inputArea.id = "ToDoListInputArea";
+        submitButton.id = "ToDoListSubmitButton";
+    }
+    else if(listType == "GroceryList"){
+        inputArea.id = "GroceryListInputArea";
+        submitButton.id = "GroceryListSubmitButton"
+    }
+    
     inputAreaColumn.appendChild(inputArea);
+    submitButtonColumn.appendChild(submitButton);
+    submitDiv.appendChild(submitButtonColumn);
+    
     submitDiv.appendChild(inputAreaColumn)
 
     if(listType == "ToDoList"){
@@ -39,7 +42,7 @@ var createSubmitButton = function (listType) {
     }
 }
 
-var createListItem = function (item, listType) {
+var createListItem = function (item, listType, listItemId) {
     let container = document.createElement("div");
     container.id = listType + "Element" + item.id;
     container.className = "row";
@@ -49,11 +52,12 @@ var createListItem = function (item, listType) {
     checkBox.type = "checkbox";
     checkBoxColumn.appendChild(checkBox);
     container.appendChild(checkBoxColumn);
-    
     let ItemColumn = document.createElement("div");
     ItemColumn.className = "col-sm-11";
 
     if (listType == "ToDoList"){
+        checkBox.id = "ToDocheckbox " + listItemId;
+        checkBox.addEventListener('click', toDoDeleteFunction);
         let toDoItem = document.createElement("p");
         toDoItem.innerHTML = item.todoitem;
         ItemColumn.appendChild(toDoItem);
@@ -62,6 +66,8 @@ var createListItem = function (item, listType) {
     }
 
     else if (listType == "GroceryList") {
+        checkBox.id = "Grocerycheckbox " + listItemId;
+        checkBox.addEventListener('click', groceryDeleteFunction);
         let groceryItem = document.createElement("p");
         groceryItem.innerHTML = item.groceryitem;
         ItemColumn.appendChild(groceryItem);
@@ -75,10 +81,8 @@ var getToDoList = function () {
         .then(function(data) {
             let allToDos = data.data;
             for (i=0; i< allToDos.length; i++){
-                createListItem(allToDos[i], "ToDoList");
+                createListItem(allToDos[i], "ToDoList", allToDos[i].id);
             }
-            createSubmitButton("ToDoList");
-
         })
         .catch(function(error) {
             console.log(error)
@@ -90,9 +94,8 @@ var getGroceryList = function(){
         .then(function(data) {
             let allGroceryList = data.data;
             for (i=0; i< allGroceryList.length; i++){
-                createListItem(allGroceryList[i], "GroceryList");
+                createListItem(allGroceryList[i], "GroceryList", allGroceryList[i].id);
             }
-            createSubmitButton("GroceryList");
         })
         .catch(function(error) {
             console.log(error)
@@ -101,3 +104,80 @@ var getGroceryList = function(){
 
 getToDoList();
 getGroceryList();
+createSubmitButton("ToDoList");
+createSubmitButton("GroceryList");
+
+var ToDoListSubmitButton = document.getElementById("ToDoListSubmitButton");
+var ToDoListInputArea = document.getElementById("ToDoListInputArea");
+var GroceryListSubmitButton = document.getElementById("GroceryListSubmitButton");
+var GroceryListInputArea = document.getElementById("GroceryListInputArea");
+
+ToDoListSubmitButton.onclick = function (){
+    if (ToDoListInputArea.value !== null & ToDoListInputArea.value !== ""){
+        let requestBody = {
+            todoitem: ToDoListInputArea.value
+        }
+        axios.post(api_url + `api/todo`, requestBody)
+        .then(function(result) {
+            createListItem(result.data, "ToDoList");
+            ToDoListInputArea.value = "";
+        })
+            
+        .catch(function(error) {
+            console.log(error)
+            //Code for handling errors
+         });
+    }    
+}
+
+GroceryListSubmitButton.onclick = function (){
+    if (GroceryListInputArea.value !== null & GroceryListInputArea.value !== ""){
+        let requestBody = {
+            groceryitem: GroceryListInputArea.value
+        }
+        axios.post(api_url + `api/grocery`, requestBody)
+        .then(function(result) {
+            createListItem(result.data, "GroceryList");
+            GroceryListInputArea.value = "";
+        })
+            
+        .catch(function(error) {
+            console.log(error)
+            //Code for handling errors
+         });
+    }    
+}
+
+var toDoDeleteFunction = function () {
+    var str = this.id;
+    var res = str.slice(12, str.length);
+    var index = parseInt(res, 10)
+
+    axios.delete(api_url + `api/todo/${index}`)
+        .then(function(result) {
+            toDoContainer.innerHTML="";
+            getToDoList();
+        })        
+        .catch(function(error) {
+            console.log(error)
+            //Code for handling errors
+        });
+}   
+
+var groceryDeleteFunction = function () {
+    var str = this.id;
+    var res = str.slice(15, str.length);
+    var index = parseInt(res, 10)
+
+    axios.delete(api_url + `api/grocery/${index}`)
+        .then(function(result) {
+            groceryContainer.innerHTML="";
+            getGroceryList();
+        })        
+        .catch(function(error) {
+            console.log(error)
+            //Code for handling errors
+        });
+}     
+
+
