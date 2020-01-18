@@ -63,9 +63,11 @@ const Todo = sequelize.define('todo', {
     timestamps: false
 });
 
-
-const Grocery = GroceryModel(sequelize, Sequelize);
-////////
+const Grocery = sequelize.define('grocery', {
+    groceryitem: Sequelize.STRING,
+}, {
+    timestamps: false
+});
 
 app.get('/', function(req, res) {
     res.render('index');
