@@ -1,4 +1,4 @@
-var api_url = process.env.DATABASE_URL;
+//var api_url = process.env.DATABASE_URL;
 var toDoContainer= document.getElementById("toDoContainer");
 var groceryContainer = document.getElementById("groceryContainer");
 var toDoList = document.getElementById("toDoList");
@@ -76,8 +76,23 @@ var createListItem = function (item, listType, listItemId) {
     }
 }
 
+// var getToDoList = function () {
+//     axios.get(api_url + 'api/todos')
+//         .then(function(data) {
+//             let allToDos = data.data;
+//             for (i=0; i< allToDos.length; i++){
+//                 createListItem(allToDos[i], "ToDoList", allToDos[i].id);
+//             }
+//         })
+//         .catch(function(error) {
+//             console.log(error)
+//         });
+// }
+
+
+
 var getToDoList = function () {
-    axios.get(api_url + 'api/todos')
+    axios.get('/api/todos')
         .then(function(data) {
             let allToDos = data.data;
             for (i=0; i< allToDos.length; i++){
