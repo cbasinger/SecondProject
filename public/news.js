@@ -1,11 +1,4 @@
-/* const unirest = require('unirest');
-const express = require('express');
-const app = express();
-const req = unirest("GET", "https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db");
- */
-const axios = require('axios');
-
-
+/* const axios = require('axios'); */
 const News = [];
 const getNews = function(){
     axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db`)
@@ -27,8 +20,7 @@ const getNews = function(){
 };
 getNews();
 
-const newsCard = document.getElementById('news-card-body');  
-newsCard.appendChild(News);
+
 /* req.query({
     language: 'en',
     country: 'us'

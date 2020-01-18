@@ -50,7 +50,7 @@
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Current Weather</h5>
-                <p class="card-text" id="weather-body"> </p>
+                <p class="card-text" id="weather-card-body"> </p>
             </div>
             </div>
             <div class="card" id= "newsCard">
@@ -114,7 +114,13 @@
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <script type="text/javascript" src="todo-and-grocery.js"></script>
-<script type="text/javascript" src="news.js"></script>
-<script type="text/javascript" src="weather.js"></script> 
+<script type="text/javascript" src="news.js">
+const newsCard = document.getElementById('news-card-body');  
+newsCard.appendChild(News);
+</script>
+<script type="text/javascript" src="weather.js">
+const weatherCard = document.getElementById('weather-card-body');  
+weatherCard.appendChild(Weather);
+</script> 
 </html>
 </html>

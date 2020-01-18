@@ -1,6 +1,7 @@
-const axios = require("axios");
-
-axios({
+/* const axios = require("axios");  */
+const Weather = [];
+const getWeather = function(){
+	axios({
     "method":"GET",
     "url":"https://dark-sky.p.rapidapi.com/33.9526,-84.5499",
     "headers":{
@@ -13,11 +14,21 @@ axios({
     }
     })
     .then((response)=>{
-      console.log(response)
+		const weatherObject = {};
+		weatherObject.name = "Local Weather";
+		weatherObject.currently = response.data.currently.summary;
+		weatherObject.temp = response.data.currently.temperature;
+		weatherObject.wind = response.data.currently.windSpeed;
+		weatherObject.alerts = response.data.alerts;
+	
+		Weather.push(weatherObject);
+		console.log(Weather);
     })
     .catch((error)=>{
       console.log(error)
-    })
+	})
+};
+getWeather();
 
 
 /* const unirest = require('unirest');
