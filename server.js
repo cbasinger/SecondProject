@@ -135,9 +135,17 @@ app.delete('/api/grocery/:id', function (req, res) {
 	.catch((e) => {
         console.error(e);
     });
+<<<<<<< HEAD
 });
 
 app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
 
+=======
+});
+
+app.listen(process.env.PORT || 3000, function(){
+    console.log('Posts API is now listening on Port 3000');
+});
+>>>>>>> 9d10156701745369c0a5175c3680beac6f08d26c
