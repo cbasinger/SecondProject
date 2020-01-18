@@ -131,10 +131,10 @@ app.delete('/api/grocery/:id', function (req, res) {
         res.end(JSON.stringify(results));
     })
 	.catch((e) => {
-        console.error(e);
+        console.error(e);    })
     });
-});
 
 app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
+
