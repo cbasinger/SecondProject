@@ -64,9 +64,6 @@ const Todo = sequelize.define('todo', {
 });
 
 
-TodoModel(sequelize, Sequelize);
-
-
 const Grocery = GroceryModel(sequelize, Sequelize);
 ////////
 
