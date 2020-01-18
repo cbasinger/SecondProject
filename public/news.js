@@ -9,15 +9,26 @@ const axios = require('axios');
 const News = [];
 const getNews = function(){
     axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db`)
-    .then((response)=>{
-        console.log(response)
-      })
-      .catch((error)=>{
-        console.log(error)
-      })
+    
+        .then((response)=>{
+            const newsObject = {};
+    newsObject.name = "Top Headlines";
+    newsObject.title = response.data.articles[0].title;
+    newsObject.source = response.data.articles[0].source;
+    newsObject.description = response.data.articles[0].description;
+    newsObject.content = response.data.articles[0].content;
+    newsObject.date = response.data.articles[0].publishedAt;
+    News.push(newsObject);
+    console.log(News);
+          })
+          .catch((error)=>{
+            console.log(error)
+          })
 };
 getNews();
-/* const newsCard = document.getElementById('news-card-body');  */
+
+const newsCard = document.getElementById('news-card-body');  
+newsCard.appendChild(News);
 /* req.query({
     language: 'en',
     country: 'us'
