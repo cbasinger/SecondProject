@@ -4,6 +4,7 @@ const newsapi = new NewsAPI('e495cac945ea4f628edffaeabbb972db');
 const req = unirest("GET", "https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db");
 /* const newsCard = document.getElementById("NewsCard"); */
 const News = [];
+/* const newsCard = document.getElementById('newsCard'); */
 req.query({
     language: 'en',
     country: 'us'
