@@ -1,4 +1,4 @@
-var api_url = process.env.BASE_URL;
+// var api_url = process.env.BASE_URL;
 var toDoContainer= document.getElementById("toDoContainer");
 var groceryContainer = document.getElementById("groceryContainer");
 var toDoList = document.getElementById("toDoList");
@@ -76,7 +76,7 @@ var createListItem = function (item, listType, listItemId) {
 }
 
 var getToDoList = function () {
-    axios.get(api_url + 'api/todos')
+    axios.get('/api/todos')
         .then(function(data) {
             let allToDos = data.data;
             for (i=0; i< allToDos.length; i++){
@@ -89,7 +89,7 @@ var getToDoList = function () {
 }
 
 var getGroceryList = function(){
-    axios.get(api_url + 'api/grocery')
+    axios.get('/api/grocery')
         .then(function(data) {
             let allGroceryList = data.data;
             for (i=0; i< allGroceryList.length; i++){
@@ -116,7 +116,7 @@ ToDoListSubmitButton.onclick = function (){
         let requestBody = {
             todoitem: ToDoListInputArea.value
         }
-        axios.post(api_url + `api/todo`, requestBody)
+        axios.post(`/api/todo`, requestBody)
         .then(function(result) {
             createListItem(result.data, "ToDoList");
             ToDoListInputArea.value = "";
@@ -134,7 +134,7 @@ GroceryListSubmitButton.onclick = function (){
         let requestBody = {
             groceryitem: GroceryListInputArea.value
         }
-        axios.post(api_url + `api/grocery`, requestBody)
+        axios.post(`/api/grocery`, requestBody)
         .then(function(result) {
             createListItem(result.data, "GroceryList");
             GroceryListInputArea.value = "";
@@ -152,7 +152,7 @@ var toDoDeleteFunction = function () {
     var res = str.slice(12, str.length);
     var index = parseInt(res, 10)
 
-    axios.delete(api_url + `api/todo/${index}`)
+    axios.delete(`/api/todo/${index}`)
         .then(function(result) {
             toDoContainer.innerHTML="";
             getToDoList();
@@ -168,7 +168,7 @@ var groceryDeleteFunction = function () {
     var res = str.slice(15, str.length);
     var index = parseInt(res, 10)
 
-    axios.delete(api_url + `api/grocery/${index}`)
+    axios.delete(`/api/grocery/${index}`)
         .then(function(result) {
             groceryContainer.innerHTML="";
             getGroceryList();
