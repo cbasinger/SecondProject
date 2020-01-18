@@ -17,7 +17,6 @@ var createSubmitButton = function (listType) {
     inputAreaColumn.className = "col-sm-11";
     let inputArea = document.createElement("input");
     inputArea.type = "text";
-    
 
     if(listType == "ToDoList"){
         inputArea.id = "ToDoListInputArea";
