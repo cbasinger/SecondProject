@@ -79,16 +79,6 @@ app.get('/api/todos', function(req, res){
     });      
 });
 
-
-
-db.query('SELECT * FROM todos')
-  .then(function (results)) {
-    results.forEach(function (r) {
-      console.log(r.id, r.name. r.address, r.category);
-    });
-  });
-
-
 // GET /api/grocery
 app.get('/api/grocery', function(req, res){
     Grocery.findAll().then((results) => {
