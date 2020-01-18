@@ -55,7 +55,16 @@ app.use( express.static( "public" ) );
 const TodoModel = require('./models/todo')
 const GroceryModel = require('./models/grocery')
 
-const Todo = TodoModel(sequelize, Sequelize);
+const Todo = sequelize.define('todo', {
+    todoitem: Sequelize.STRING,
+}, {
+    timestamps: false
+});
+
+
+TodoModel(sequelize, Sequelize);
+
+
 const Grocery = GroceryModel(sequelize, Sequelize);
 ////////
 
@@ -70,6 +79,16 @@ app.get('/api/todos', function(req, res){
         res.end(JSON.stringify(results));
     });      
 });
+
+
+
+db.query('SELECT * FROM todos')
+  .then(function (results)) {
+    results.forEach(function (r) {
+      console.log(r.id, r.name. r.address, r.category);
+    });
+  });
+
 
 // GET /api/grocery
 app.get('/api/grocery', function(req, res){
