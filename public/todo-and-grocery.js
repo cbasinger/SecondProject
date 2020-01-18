@@ -1,4 +1,4 @@
-var api_url = 'http://localhost:3000/';
+var api_url = process.env.DATABASE_URL;
 var toDoContainer= document.getElementById("toDoContainer");
 var groceryContainer = document.getElementById("groceryContainer");
 var toDoList = document.getElementById("toDoList");
