@@ -5,6 +5,5 @@ body {
 .card {
     flex: content;
     flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between !important;
+    flex-direction: row !important;
 }

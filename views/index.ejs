@@ -7,7 +7,6 @@
     <title>Soccer Mommy</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,10 +28,13 @@
         <div class="jumbotron jumbotron-fluid">
         <div class="container">
         <h1 class="display-4">Soccer Mommy</h1>
-        <p class="lead">Utilize your time Bitch!</p>
+        <p class="lead">Utilize your Time!</p>
         </div>
     </center>
-        
+    <center>
+        <div id="toDoContainer">
+            <h1>To Do List</h1>
+        </div>      
         <br>
         <br>
         <div id="toDoList">
@@ -42,9 +44,8 @@
         <div id="groceryList">
             <h1>Grocery List</h1>
             <div id="groceryContainer"></div> 
-       </div>
-
-        <center>
+    </div>
+    <center>
         <div class="card-group">
             <div class="card" id="weatherCard">
             <img src="..." class="card-img-top" alt="...">
@@ -61,54 +62,21 @@
             </div>
             </div>
         </div>
-        </center>
-        <style>
-            * { margin: 0; padding: 0; box-sizing: border-box; }
-            body { font: 13px Helvetica, Arial; }
-            form { background: rgb(52, 58, 64); padding: 3px; position: fixed; bottom: 0; width: 100%; }
-            form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-            form button { width: 9%; background: rgb(d3, d3, d3); border: none; padding: 10px; }
-            #messages { list-style-type: none; margin: 0; padding: 0; }
-            #messages li { padding: 5px 10px; }
-            #messages li:nth-child(odd) { background: #eee; }
-        </style>
-        </head>
-        <body>
-        <ul id="messages"></ul>
-        <form action="">
-            <input id="m" autocomplete="off" /><button>Send</button>
-        </form>
-        <script>
-            var socket = io();
-            </script>
-            <script src="/socket.io/socket.io.js"></script>
-            <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-            <script>
-            $(function () {
-                var socket = io();
-                $('form').submit(function(e){
-                  e.preventDefault(); // prevents page reloading
-                socket.emit('chat message', $('#m').val());
-                $('#m').val('');
-                return false;
-                });
-            });
-            </script>
-            <script>
-                $(function () {
-                var socket = io();
-                $('form').submit(function(e){
-                    e.preventDefault(); // prevents page reloading
-                    socket.emit('chat message', $('#m').val());
-                    $('#m').val('');
-                    return false;
-                });
-                socket.on('chat message', function(msg){
-                    $('#messages').append($('<li>').text(msg));
-                });
-                });
-            </script>
-    
+        <br>
+        <br>
+    <div id="toDoList">
+        <h1>To Do List</h1>
+        <div id="toDoContainer"></div>
+    </div>
+    <div id="groceryList">
+        <h1>Grocery List</h1>
+        <div id="groceryContainer"></div> 
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    </center>
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
