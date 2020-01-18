@@ -1,5 +1,4 @@
-const NewsAPI = require('newsapi');
-const unirest = require('unirest');
+
 const newsapi = new NewsAPI('e495cac945ea4f628edffaeabbb972db');
 const req = unirest("GET", "https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db");
 /* const newsCard = document.getElementById("NewsCard"); */
