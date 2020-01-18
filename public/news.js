@@ -12,9 +12,9 @@ const getNews = function(){
     newsObject.description = response.data.articles[0].description;
     newsObject.content = response.data.articles[0].content;
     newsObject.date = response.data.articles[0].publishedAt;
-    News.push(newsObject);
+    
     newsCard.className = "card-title";
-    newsCard.innerHTML = News;
+    newsCard.innerHTML = newsObject.title + newsObject.source;
     console.log(News);
           })
           
