@@ -1,6 +1,6 @@
 /* const axios = require("axios");  */
 const Weather = [];
-const weatherCard = document.getElementbyID('weatherCard')
+const weatherCard = document.getElementbyID('weatherCard');
 const getWeather = function(){
 	axios({
     "method":"GET",
