@@ -7,6 +7,8 @@ const client = new Client({
   ssl: true,
 });
 
+console.log(process.env);
+
 client.connect();
 
 client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
