@@ -149,5 +149,3 @@ app.delete('/api/grocery/:id', function (req, res) {
 app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
-
-
