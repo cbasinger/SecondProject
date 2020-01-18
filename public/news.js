@@ -1,8 +1,7 @@
-
+const app = express();
 const req = unirest("GET", "https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db");
-/* const newsCard = document.getElementById("NewsCard"); */
 const News = [];
-/* const newsCard = document.getElementById('newsCard'); */
+const newsCard = document.getElementById('news-card-body'); 
 req.query({
     language: 'en',
     country: 'us'
@@ -19,33 +18,12 @@ req.end(function (res) {
     newsObject.date = res.body.articles[0].publishedAt;
 
     News.push(newsObject);
-    console.log(News);
+    newsCard.appendChild(News);
 });
 };
 getNews();
 
 
-/* const createNewsCard = function(){
-    for (i=0; i<5; i++){
-        const newsCardContainer = document.createElement("div");
-        newsCardContainer.className = "card card_"+i+"_div";
-        var newCard = document.createElement("div");
-        newCard.className = "card";
-        newCard.style = "width: 25rem;";
-        var newCardBody = document.createElement("div");
-        newCardBody.className = "card-body";
-        var newCardTitle = document.createElement("h5");
-        newCardTitle.className = "card-title";
-        newCardTitle.innerHTML = articles[i].title;
-    }
-} */
-// To query /v2/top-headlines
-// All options passed to topHeadlines are optional, but you need to include at least one of them
 
-
-    
-
-
-    /* if (res.error) throw new Error(res.error) */
     
 
