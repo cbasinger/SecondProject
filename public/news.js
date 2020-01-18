@@ -8,12 +8,12 @@ const getNews = function(){
             const newsObject = {};
     newsObject.name = "Top Headlines";
     newsObject.title = response.data.articles[0].title;
-    newsObject.source = response.data.articles[0].source;
+    newsObject.source = response.data.articles[0].source.name;
     newsObject.description = response.data.articles[0].description;
     newsObject.content = response.data.articles[0].content;
     newsObject.date = response.data.articles[0].publishedAt;
     
-    newsCard.className = "card-title";
+    newsCard.className = "card-body";
     newsCard.innerHTML = newsObject.title + newsObject.source;
     console.log(News);
           })

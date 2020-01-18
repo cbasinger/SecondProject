@@ -1,5 +1,6 @@
 /* const axios = require("axios");  */
 const Weather = [];
+const weatherCard = docuemnt.getElementbyID('weatherCard')
 const getWeather = function(){
 	axios({
     "method":"GET",
@@ -21,7 +22,8 @@ const getWeather = function(){
 		weatherObject.wind = response.data.currently.windSpeed;
 		weatherObject.alerts = response.data.alerts;
 	
-		Weather.push(weatherObject);
+		weatherCard.className= "card-body";
+		weatherCard.innerHTML= weatherObject.currently + weatherObject.temp;
 		console.log(Weather);
     })
     .catch((error)=>{
