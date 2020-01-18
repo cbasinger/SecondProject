@@ -2,7 +2,7 @@ const express = require('express');
 const unirest = require("unirest");
 
 const app = express();
-const req = unirest("GET", "https://dark-sky.p.rapidapi.com/33.9526,-84.5499");
+const req1 = unirest("GET", "https://dark-sky.p.rapidapi.com/33.9526,-84.5499");
 const Weather = [];
 const weatherCard = document.getElementById('weather-body');
 
