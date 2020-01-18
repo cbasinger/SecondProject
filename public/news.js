@@ -9,6 +9,7 @@ req.query({
     country: 'us'
 });
 
+function getNews() {
 req.end(function (res) {
     const newsObject = {};
     newsObject.name = "Top Headlines";
@@ -21,7 +22,8 @@ req.end(function (res) {
     News.push(newsObject);
     console.log(News);
 });
-
+};
+getNews();
 
 
 /* const createNewsCard = function(){
