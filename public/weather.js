@@ -1,35 +1,19 @@
-/* const axios = require("axios");  */
+const axios = require("axios");  
 const Weather = [];
-const weatherCard = document.getElementbyID('weatherCard');
+
+/* const weatherCard = document.getElementbyID('weatherCard'); */
 const getWeather = function(){
-	axios({
-    "method":"GET",
-    "url":"https://dark-sky.p.rapidapi.com/33.9526,-84.5499",
-    "headers":{
-    "content-type":"application/octet-stream",
-    "x-rapidapi-host":"dark-sky.p.rapidapi.com",
-    "x-rapidapi-key":"8fcd0baf41msh43380c9a5223fd7p18e2c5jsn53d5da255ddd"
-    },"params":{
-    "lang":"en",
-    "units":"auto"
-    }
-    })
-    .then((response)=>{
+	axios.get(`https://api.darksky.net/forecast/72ab598c45cd158cc33bd7e28c892580/33.9526,-84.5499`)
+		.then((response) => {
 		const weatherObject = {};
 		weatherObject.name = "Local Weather";
-		weatherObject.currently = response.data.currently.summary;
-		weatherObject.temp = response.data.currently.temperature;
-		weatherObject.wind = response.data.currently.windSpeed;
-		weatherObject.alerts = response.data.alerts;
+		weatherObject.weather=response.data.currently
 	
 		weatherCard.className= "card-body";
-		weatherCard.innerHTML= weatherObject.currently + weatherObject.temp;
-		console.log(Weather);
-    })
-    .catch((error)=>{
-      console.log(error)
-	})
-};
+		weatherCard.innerHTML= weatherObject.currently; 
+		/* console.log(response); */
+		})
+	};
 getWeather();
 
 

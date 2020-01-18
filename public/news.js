@@ -15,7 +15,7 @@ const getNews = function(){
     
     newsCard.className = "card-body";
     newsCard.innerHTML = newsObject.title + newsObject.source;
-    console.log(News);
+    /* console.log(News); */
           })
           
 };
