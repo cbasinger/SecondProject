@@ -15,19 +15,19 @@ console.log('listening on *:3000');
 });
 
 io.on('connection', function(socket){
-    socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-    });
+socket.on('chat message', function(msg){
+console.log('message: ' + msg);
+});
 });
 
 io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' }); // This will emit the event to all connected sockets
 
 io.on('connection', function(socket){
-    socket.broadcast.emit('hi');
+socket.broadcast.emit('hi');
 });
 
 io.on('connection', function(socket){
-    socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-    });
+socket.on('chat message', function(msg){
+io.emit('chat message', msg);
+});
 });
