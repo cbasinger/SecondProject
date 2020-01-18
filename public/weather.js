@@ -1,7 +1,7 @@
-const axios = require("axios");  
+/* const axios = require("axios");   */
 const Weather = [];
 
-/* const weatherCard = document.getElementbyID('weatherCard'); */
+const weatherCard = document.getElementbyID('weatherCard'); 
 const getWeather = function(){
 	axios.get(`https://api.darksky.net/forecast/72ab598c45cd158cc33bd7e28c892580/33.9526,-84.5499`)
 		.then((response) => {
