@@ -1,4 +1,3 @@
-// var api_url = process.env.BASE_URL;
 var toDoContainer= document.getElementById("toDoContainer");
 var groceryContainer = document.getElementById("groceryContainer");
 var toDoList = document.getElementById("toDoList");
@@ -177,6 +176,4 @@ var groceryDeleteFunction = function () {
             console.log(error)
             //Code for handling errors
         });
-}     
-
-
+}

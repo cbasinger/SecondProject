@@ -1,13 +1,9 @@
-//const bcrypt = require('bcrypt');
-
 const { Client } = require('pg');
 
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
-
-console.log(process.env);
 
 client.connect();
 
@@ -28,8 +24,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 
-
-
 dotenv.config();
 
 const env = process.env.NODE_ENV || 'development';
@@ -47,13 +41,11 @@ if (process.env.DATABASE_URL) {
 const app = express();
 
 app.use(cookieParser())
-//app.use(session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use( express.static( "public" ) );
 
-///////
 const TodoModel = require('./models/todo')
 const GroceryModel = require('./models/grocery')
 
@@ -73,7 +65,6 @@ app.get('/', function(req, res) {
     res.render('index');
 });
 
-// GET /api/todo
 app.get('/api/todos', function(req, res){
     Todo.findAll().then((results) => {
         res.setHeader('Content-Type', 'application/json');
@@ -81,7 +72,6 @@ app.get('/api/todos', function(req, res){
     });      
 });
 
-// GET /api/grocery
 app.get('/api/grocery', function(req, res){
     Grocery.findAll().then((results) => {
         res.setHeader('Content-Type', 'application/json');
@@ -89,7 +79,6 @@ app.get('/api/grocery', function(req, res){
     });      
 });
 
-//POST /api/todo
 app.post('/api/todo', function (req, res) {
     let data = {
         todoitem: req.body.todoitem
