@@ -2,8 +2,12 @@ body {
     align-items: center !important;
 }
 
-.card {
-    flex: content;
+.card-group{
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    flex-direction: row !important;
+    justify-content: center;
+}
+.card {
+    width: 200px;
 }
