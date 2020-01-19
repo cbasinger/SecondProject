@@ -8,15 +8,12 @@ var createSubmitButton = function (listType) {
     submitContainer.className = "container";
 
     let submitDiv = document.createElement("div");
-    submitDiv.className = "row";
     submitDiv.id = listType + " submitButtonDiv";
     let submitButtonColumn = document.createElement("div");
-    submitButtonColumn.className = "col";
     let submitButton = document.createElement("button");
     submitButton.type = "button";
     submitButton.innerHTML = "Submit";
     let inputAreaColumn = document.createElement("div");
-    inputAreaColumn.className = "col-4";
     let inputArea = document.createElement("input");
     inputArea.type = "text";
 
