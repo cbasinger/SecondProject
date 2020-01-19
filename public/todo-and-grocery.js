@@ -31,8 +31,8 @@ var createSubmitButton = function (listType) {
     
     inputAreaColumn.appendChild(inputArea);
     submitButtonColumn.appendChild(submitButton);
-    submitDiv.appendChild(submitButtonColumn);
     submitDiv.appendChild(inputAreaColumn)
+    submitDiv.appendChild(submitButtonColumn);
     submitContainer.appendChild(submitDiv);
 
     if(listType == "ToDoList"){
