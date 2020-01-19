@@ -1,5 +1,5 @@
 const News = [];
-const newsCard = document.getElementById('newsCard');
+const newsCard = document.getElementById('news-card-body');
 const getNews = function(){
     axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db`)
     
@@ -11,8 +11,6 @@ const getNews = function(){
     newsObject.description = response.data.articles[0].description;
     newsObject.content = response.data.articles[0].content;
     newsObject.date = response.data.articles[0].publishedAt;
-    
-    newsCard.className = "card-body";
     newsCard.innerHTML = newsObject.title + newsObject.source;
     /* console.log(News); */
           })
