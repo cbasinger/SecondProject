@@ -46,8 +46,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use( express.static( "public" ) );
 
-const TodoModel = require('./models/todo')
-const GroceryModel = require('./models/grocery')
+// const TodoModel = require('./models/todo')
+// const GroceryModel = require('./models/grocery')
 
 const Todo = sequelize.define('todo', {
     todoitem: Sequelize.STRING,
