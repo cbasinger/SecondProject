@@ -8,12 +8,12 @@ var createSubmitButton = function (listType) {
     submitDiv.className = "row";
     submitDiv.id = listType + " submitButtonDiv";
     let submitButtonColumn = document.createElement("div");
-    submitButtonColumn.className = "col-sm-1";
+    submitButtonColumn.className = "col-md-1";
     let submitButton = document.createElement("button");
     submitButton.type = "button";
     submitButton.innerHTML = "Submit";
     let inputAreaColumn = document.createElement("div");
-    inputAreaColumn.className = "col-sm-11";
+    inputAreaColumn.className = "col-md-11";
     let inputArea = document.createElement("input");
     inputArea.type = "text";
 
@@ -45,13 +45,13 @@ var createListItem = function (item, listType, listItemId) {
     container.id = listType + "Element" + item.id;
     container.className = "row";
     let checkBoxColumn = document.createElement("div");
-    checkBoxColumn.className = "col-sm-1";
+    checkBoxColumn.className = "col-md-1";
     let checkBox = document.createElement("input");
     checkBox.type = "checkbox";
     checkBoxColumn.appendChild(checkBox);
     container.appendChild(checkBoxColumn);
     let ItemColumn = document.createElement("div");
-    ItemColumn.className = "col-sm-11";
+    ItemColumn.className = "col-md-11";
 
     if (listType == "ToDoList"){
         checkBox.id = "ToDocheckbox " + listItemId;
