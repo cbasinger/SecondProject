@@ -4,6 +4,9 @@ var toDoList = document.getElementById("toDoList");
 var groceryList = document.getElementById("groceryList");
 
 var createSubmitButton = function (listType) {
+    let submitContainer = document.createElement("div");
+    submitContainer.className = "container";
+
     let submitDiv = document.createElement("div");
     submitDiv.className = "row";
     submitDiv.id = listType + " submitButtonDiv";
@@ -29,14 +32,14 @@ var createSubmitButton = function (listType) {
     inputAreaColumn.appendChild(inputArea);
     submitButtonColumn.appendChild(submitButton);
     submitDiv.appendChild(submitButtonColumn);
-    
     submitDiv.appendChild(inputAreaColumn)
+    submitContainer.appendChild(submitDiv);
 
     if(listType == "ToDoList"){
-        toDoList.appendChild(submitDiv);
+        toDoList.appendChild(submitContainer);
     }
     else if(listType == "GroceryList"){
-        groceryList.appendChild(submitDiv);
+        groceryList.appendChild(submitContainer);
     }
 }
 
