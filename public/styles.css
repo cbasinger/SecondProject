@@ -1,0 +1,8 @@
+.card-group {
+    display: flex;
+  }
+  
+  .card {
+    width: 100px;  /* Or whatever */
+    margin: auto;  /* Magic! */
+  }
