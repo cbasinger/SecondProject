@@ -1,9 +1,17 @@
 body {
+    margin: 0;
+    height: 100vh;
+    font-size: 5em; 
     align-items: center !important;
 }
 
 .card {
-    flex: content;
-    flex-wrap: wrap;
-    flex-direction: row !important;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    justify-content: center;
+    align-items: center;
+    place-items: center;
 }
