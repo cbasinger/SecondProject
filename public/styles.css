@@ -5,13 +5,26 @@ body {
     align-items: center !important;
 }
 
+<<<<<<< HEAD
 .card {
+=======
+.card-group {
+>>>>>>> a92ce31a301ddff433231179d3e7c64e23bfc10d
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: grid;
+<<<<<<< HEAD
     grid-template-columns: repeat(2,auto);
     justify-content: center;
     align-items: center;
     place-items: center;
 }
+=======
+    grid-template-columns: repeat(3,auto);
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+}
+
+>>>>>>> a92ce31a301ddff433231179d3e7c64e23bfc10d
