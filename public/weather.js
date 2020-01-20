@@ -2,6 +2,23 @@
 const Weather = [];
 const weatherCard = document.getElementById('weatherCard'); 
 
+/* const axios = require("axios");   */
+const Weather = [];
+const weatherCard = document.getElementById('weatherCard');
+
+const getWeather = function(){
+	axios.get(`https://api.darksky.net/forecast/72ab598c45cd158cc33bd7e28c892580/33.9526,-84.5499`)
+		.then((response) => {
+		const weatherObject = {};
+		weatherObject.name = "Local Weather";
+		weatherObject.weather=response.data.currently
+	
+		weatherCard.className= "card-body";
+		weatherCard.innerHTML= weatherObject.currently; 
+		/* console.log(response); */
+		})
+	};
+getWeather();
 
 const getWeather= function(){
 	axios.get(`https://api.darksky.net/forecast/72ab598c45cd158cc33bd7e28c892580/33.7490,-84.3880`)

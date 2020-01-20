@@ -1,5 +1,8 @@
 const News = [];
 const newsCard = document.getElementById('news-card-body');
+/* const axios = require('axios'); */
+const News = [];
+const newsCard = document.getElementById('newsCard');
 const getNews = function(){
     axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=e495cac945ea4f628edffaeabbb972db`)
     
@@ -17,7 +20,8 @@ const getNews = function(){
           
 };
 getNews();
-/* const newsCard = document.getElementById('news-card-body');  */
+
+
 /* req.query({
     language: 'en',
     country: 'us'
