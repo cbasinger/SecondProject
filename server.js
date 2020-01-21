@@ -36,6 +36,10 @@ dotenv.config();
 
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/config/config.json')[env];
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    next();
+  });
 
 let sequelize;
 if (process.env.DATABASE_URL) {
