@@ -24,6 +24,12 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const path = require('path');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+
 
 
 
@@ -32,6 +38,7 @@ dotenv.config();
 
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/config/config.json')[env];
+
 
 let sequelize;
 if (process.env.DATABASE_URL) {
@@ -49,7 +56,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use( express.static( "public" ) );
-app.use(cors());
 
 
 const Todo = sequelize.define('todo', {
