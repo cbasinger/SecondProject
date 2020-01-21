@@ -56,7 +56,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use( express.static( "public" ) );
-app.use(cors());
 
 ///////
 const TodoModel = require('./models/todo')

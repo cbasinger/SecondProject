@@ -11,7 +11,7 @@ const getWeather = function(){
 	
 		weatherCard.className= "card-body";
 		weatherCard.innerHTML= weatherObject.currently; 
-		/* console.log(response); */
+		console.log(response);
 		})
 	};
 getWeather();
