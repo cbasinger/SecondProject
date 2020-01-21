@@ -1,6 +1,4 @@
-
-
-/* const axios = require("axios");   */
+/* const axios = require("axios"); */   
 const Weather = [];
 const weatherCard = document.getElementById('weatherCard');
 
@@ -21,11 +19,10 @@ const getWeather = function(){
 		.then((response) => {
 		const weatherObject = {};
 		weatherObject.name = "Local Weather";
-		weatherObject.weather= response.currently;
-	
+		weatherObject.weather= response.data.currently.icon + response.data.currently.summary + response.data.currently.temperature
 		weatherCard.className= "card-body";
-		weatherCard.innerHTML= weatherObject.weather; 
-		console.log(response);
+		weatherCard.innerHTML= weatherObject.weather;  
+		console.log(weatherObject);
 		})
 		.catch((error)=>{
 			console.log(error)
