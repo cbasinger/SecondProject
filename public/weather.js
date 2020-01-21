@@ -18,10 +18,12 @@ const getWeather = function(){
 		})
 		.then((response) => {
 		const weatherObject = {};
-		weatherObject.name = "Local Weather";
-		weatherObject.weather= "Atlanta " + response.data.currently.icon + " " + response.data.currently.summary + " " + response.data.currently.temperature;
+		weatherObject.name = "Local Weather for Atlanta, Georgia";
+		weatherObject.icon = response.data.currently.icon ;
+		weatherObject.summary = response.data.currently.summary ;
+		weatherObject.temperature = response.data.currently.temperature;
 		weatherCard.className= "card-body";
-		weatherCard.innerHTML= weatherObject.weather;  
+		weatherCard.innerHTML= weatherObject; 
 		console.log(weatherObject);
 		})
 		.catch((error)=>{
