@@ -1,6 +1,6 @@
 /* const axios = require("axios");  */
 const Weather = [];
-const weatherCard = document.getElementById('weatherCard');
+const weatherCard = document.getElementById('card-body');
 
 const getWeather = function(){
 	axios({
@@ -22,7 +22,7 @@ const getWeather = function(){
 		weatherObject.icon = response.data.currently.icon ;
 		weatherObject.summary = response.data.currently.summary ;
 		weatherObject.temperature = response.data.currently.temperature;
-		weatherCard.id= "card-body";
+		/* weatherCard.id= "card-body"; */
 		weatherCard.innerHTML= weatherObject; 
 		console.log(weatherObject);
   })
