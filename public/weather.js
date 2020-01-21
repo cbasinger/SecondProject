@@ -23,19 +23,14 @@ const getWeather = function(){
 		weatherObject.summary = response.data.currently.summary ;
 		weatherObject.temperature = response.data.currently.temperature;
 		weatherCard.className= "card-body";
-		weatherCard.className.className= "card-title";
-		weatherCard.className.className.innerHTML = weatherObject.name;
-		weatherCard.className.className1= "card-text";
-		weatherCard.className.className1= weatherObject.summary+ " " + weatherObject.temperature;
-
 		weatherCard.innerHTML= weatherObject; 
 		console.log(weatherObject);
 		})
 		.catch((error)=>{
-			console.log(error)
+		console.log(error)
 		  })
 	};
-getWeather();
+getWeather()
 
 	
 /* const unirest = require('unirest');
