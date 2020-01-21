@@ -23,7 +23,7 @@ const getWeather = function(){
 		.then((response) => {
 		const weatherObject = {};
 		weatherObject.name = "Local Weather";
-		weatherObject.weather=response.test.data.name + response.test.data.weather.description + response.test.data.main.temp;
+		weatherObject.weather=response.data.test.name + response.data.test.weather.description + response.data.test.main.temp;
 	
 		weatherCard.className= "card-body";
 		weatherCard.innerHTML= weatherObject.weather; 
