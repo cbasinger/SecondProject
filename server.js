@@ -19,16 +19,12 @@ const express = require('express');
 const passport = require('passport');
 const cors = require('cors');
 const Sequelize = require('sequelize');
-const path = require('path');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const path = require('path');
-const session = require('express-session');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
+
 
 
 
