@@ -17,6 +17,7 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
 
 const express = require('express');
 const passport = require('passport');
+const cors = require('cors');
 const Sequelize = require('sequelize');
 const path = require('path');
 const session = require('express-session');
@@ -49,12 +50,13 @@ if (process.env.DATABASE_URL) {
 }
 
 const app = express();
-
+app.use(cors());
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use( express.static( "public" ) );
+
 
 
 const Todo = sequelize.define('todo', {
