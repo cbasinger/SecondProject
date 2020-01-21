@@ -19,7 +19,7 @@ const getWeather = function(){
 		.then((response) => {
 		const weatherObject = {};
 		weatherObject.name = "Local Weather";
-		weatherObject.weather= response.data.currently.icon + response.data.currently.summary + response.data.currently.temperature
+		weatherObject.weather= "Atlanta " + response.data.currently.icon + " " + response.data.currently.summary + " " + response.data.currently.temperature;
 		weatherCard.className= "card-body";
 		weatherCard.innerHTML= weatherObject.weather;  
 		console.log(weatherObject);
