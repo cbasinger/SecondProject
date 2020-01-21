@@ -15,10 +15,9 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
   client.end();
 });
 
-const express = require('express')
-const cors = require('cors')
-const passport = require('passport')
-const Sequelize = require('sequelize')
+const express = require('express');
+const passport = require('passport');
+const Sequelize = require('sequelize');
 const path = require('path');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
