@@ -7,28 +7,29 @@ const weatherCard = document.getElementById('weatherCard');
 const getWeather = function(){
 	axios({
 		"method":"GET",
-		"url":"https://community-open-weather-map.p.rapidapi.com/weather",
+		"url":"https://dark-sky.p.rapidapi.com/33.7490,-84.3880",
 		"headers":{
 		"content-type":"application/octet-stream",
-		"x-rapidapi-host":"community-open-weather-map.p.rapidapi.com",
-		"x-rapidapi-key":"8fcd0baf41msh43380c9a5223fd7p18e2c5jsn53d5da255ddd"
+		"x-rapidapi-host":"dark-sky.p.rapidapi.com",
+		"x-rapidapi-key":"7fe1b1a801msh0ac2cb4e3546c80p1529fcjsn2a7168032f32"
 		},"params":{
-		"callback":"test",
-		"id":"2172797",
-		"units":"%22metric%22 or %22imperial%22",
-		"mode":"xml%2C html",
-		"q":"Atlanta"
+		"lang":"en",
+		"units":"auto",
+		"exclude":"minutely%2C hourly%2C daily%2C flags"
 		}
 		})
 		.then((response) => {
 		const weatherObject = {};
 		weatherObject.name = "Local Weather";
-		weatherObject.weather=response.data.test.name + response.data.test.weather.description + response.data.test.main.temp;
+		weatherObject.weather= response.currently;
 	
 		weatherCard.className= "card-body";
 		weatherCard.innerHTML= weatherObject.weather; 
 		console.log(response);
 		})
+		.catch((error)=>{
+			console.log(error)
+		  })
 	};
 getWeather();
 
