@@ -25,6 +25,7 @@ body {
     border-radius: 25px;
     border: 2px solid lightgray;
     padding: 10px;
+    margin: 0 5px;
   }
 
 /*.card-group {
