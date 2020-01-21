@@ -51,6 +51,7 @@ app.set('view engine', 'ejs');
 app.use( express.static( "public" ) );
 app.use(cors());
 
+
 const Todo = sequelize.define('todo', {
     todoitem: Sequelize.STRING,
 }, {

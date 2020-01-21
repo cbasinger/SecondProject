@@ -1,18 +1,32 @@
 
 
-/* const axios = require("axios");  */ 
+/* const axios = require("axios");   */
 const Weather = [];
 const weatherCard = document.getElementById('weatherCard');
 
 const getWeather = function(){
-	axios.get(`https://api.darksky.net/forecast/72ab598c45cd158cc33bd7e28c892580/33.9526,-84.5499`)
+	axios({
+		"method":"GET",
+		"url":"https://community-open-weather-map.p.rapidapi.com/weather",
+		"headers":{
+		"content-type":"application/octet-stream",
+		"x-rapidapi-host":"community-open-weather-map.p.rapidapi.com",
+		"x-rapidapi-key":"8fcd0baf41msh43380c9a5223fd7p18e2c5jsn53d5da255ddd"
+		},"params":{
+		"callback":"test",
+		"id":"2172797",
+		"units":"%22metric%22 or %22imperial%22",
+		"mode":"xml%2C html",
+		"q":"Atlanta"
+		}
+		})
 		.then((response) => {
 		const weatherObject = {};
 		weatherObject.name = "Local Weather";
-		weatherObject.weather=response.data.currently
+		weatherObject.weather=response.data.name + response.data.weather.description + response.data.main.temp;
 	
 		weatherCard.className= "card-body";
-		weatherCard.innerHTML= weatherObject.currently; 
+		weatherCard.innerHTML= weatherObject.weather; 
 		console.log(response);
 		})
 	};
