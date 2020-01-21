@@ -25,7 +25,7 @@ const getWeather = function(){
 		weatherCard.className= "card-body";
 		weatherCard.innerHTML= weatherObject; 
 		console.log(weatherObject);
-		})
+  })
 		.catch((error)=>{
 		console.log(error)
 		  })

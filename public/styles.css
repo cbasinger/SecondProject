@@ -5,7 +5,30 @@ body {
     align-items: center !important;
 }
 
-.card-group {
+.display-4 {
+    text-align: center;
+}
+
+.lead {
+    text-align: center;
+}
+
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  
+  .child {
+    width: 300px;  /* Or whatever */
+    margin: auto;  /* Magic! */
+    border-radius: 25px;
+    border: 2px solid lightgray;
+    padding: 10px;
+    margin: 5px 5px;
+  }
+
+/*.card-group {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -14,5 +37,5 @@ body {
     justify-content: center;
     align-items: center;
     place-items: center;
-}
+}*/
 
