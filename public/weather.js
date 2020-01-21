@@ -22,7 +22,7 @@ const getWeather = function(){
 		weatherObject.icon = response.data.currently.icon ;
 		weatherObject.summary = response.data.currently.summary ;
 		weatherObject.temperature = response.data.currently.temperature;
-		weatherCard.className= "card-body";
+		weatherCard.id= "card-body";
 		weatherCard.innerHTML= weatherObject; 
 		console.log(weatherObject);
   })
