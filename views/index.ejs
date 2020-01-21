@@ -22,14 +22,42 @@
             </ul>
             </div>
     </nav>
-    <center>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">Before You Leave</h1>
-                <p class="lead">Utilize Your Time!</p>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Before You Leave</h1>
+            <p class="lead">Utilize Your Time!</p>
+        </div>
+    </div>
+    <div class="parent">
+        <div class="child" id="todoCard">
+            <div id="toDoList">
+                <h5>To Do List</h1>
+                <div id="toDoContainer" class="container"></div>
             </div>
         </div>
-    </center>
+        <div class="child" id="groceryListCard">
+            <div id="groceryList">
+                <h5>Grocery List</h5>
+                <div id="groceryContainer" class="container"></div>
+            </div>
+        </div>
+        <div class="child" id="weatherCard">
+            <img class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Current Weather</h5>
+                <p class="card-text" id="weather-body"> </p>
+            </div>
+        </div>
+        <div class="child" id= "newsCard">
+            <img class="card-img-top" alt="">
+            <div class="card-body">
+                <h5 class="card-title">Current News</h5>
+                <p class="card-text" id="news-card-body"></p>
+            </div>
+        </div>
+    </div>
+
+<!--
     <div class="card-group">
         <div class="row">
             <div class="card col" id="todoCard">
@@ -62,6 +90,7 @@
             <div class="card col"></div>
         </div>
     </div>
+-->
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
