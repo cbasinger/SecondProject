@@ -15,7 +15,7 @@ const getNews = function(){
     newsObject.content = response.data.articles[0].content;
     newsObject.date = response.data.articles[0].publishedAt;
     newsCard.innerHTML = "Title: " + newsObject.title + " Source: " + newsObject.source + "  " + newsObject.content;
-    console.log(newsObject);
+    //console.log(newsObject);
     })
 };
 getNews();

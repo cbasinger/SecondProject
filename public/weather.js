@@ -20,9 +20,9 @@ const weatherCard = document.getElementById('weather-body');
 		const weatherObject = {};
 		weatherObject.name = "Local Weather for Atlanta, Georgia";
 		weatherObject.icon = response.data.currently.icon ;
-		/* weatherObject.summary = response.data.currently.summary ; */
+		weatherObject.summary = response.data.currently.summary ;
 		weatherObject.temperature = response.data.currently.temperature;
-		/* weatherCard.id= "card-body"; */
+		weatherCard.id= "card-body";
 		weatherCard.innerHTML= weatherObject.name + " Currently: " + weatherObject.icon + " Temperature: " + weatherObject.temperature; 
 		console.log(weatherObject);
   })
@@ -31,5 +31,5 @@ const weatherCard = document.getElementById('weather-body');
 		  })
 	};
 getWeather()
- */
+*/
 	
