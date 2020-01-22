@@ -2,7 +2,7 @@
 const Weather = [];
 const weatherCard = document.getElementById('weather-body');
 
-const getWeather = function(){
+/* const getWeather = function(){
 	axios({
 		"method":"GET",
 		"url":"https://dark-sky.p.rapidapi.com/33.7490,-84.3880",
@@ -31,5 +31,5 @@ const getWeather = function(){
 		  })
 	};
 getWeather()
-
+ */
 	
