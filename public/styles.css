@@ -20,12 +20,13 @@ body {
   }
   
   .child {
-    width: 300px;  /* Or whatever */
+    width: 325px;  /* Or whatever */
     margin: auto;  /* Magic! */
     border-radius: 25px;
     border: 2px solid lightgray;
     padding: 10px;
     margin: 5px 5px;
+    justify-content: space-evenly;
   }
 
 /*.card-group {
