@@ -1,5 +1,3 @@
-//const bcrypt = require('bcrypt');
-
 const { Client } = require('pg');
 
 const client = new Client({
@@ -17,17 +15,16 @@ client.query('SELECT table_schema,table_name FROM information_schema.tables;', (
   client.end();
 });
 
-
-
 const express = require('express');
-
 const passport = require('passport');
+const cors = require('cors');
 const Sequelize = require('sequelize');
-const path = require('path');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const path = require('path');
+
 
 
 
@@ -49,27 +46,31 @@ if (process.env.DATABASE_URL) {
 }
 
 const app = express();
-
+app.use(cors());
 app.use(cookieParser())
-//app.use(session());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
 app.use( express.static( "public" ) );
 
-///////
-const TodoModel = require('./models/todo')
-const GroceryModel = require('./models/grocery')
 
-const Todo = TodoModel(sequelize, Sequelize);
-const Grocery = GroceryModel(sequelize, Sequelize);
-////////
+
+const Todo = sequelize.define('todo', {
+    todoitem: Sequelize.STRING,
+}, {
+    timestamps: false
+});
+
+const Grocery = sequelize.define('grocery', {
+    groceryitem: Sequelize.STRING,
+}, {
+    timestamps: false
+});
 
 app.get('/', function(req, res) {
     res.render('index');
 });
 
-// GET /api/todo
 app.get('/api/todos', function(req, res){
     Todo.findAll().then((results) => {
         res.setHeader('Content-Type', 'application/json');
@@ -77,7 +78,6 @@ app.get('/api/todos', function(req, res){
     });      
 });
 
-// GET /api/grocery
 app.get('/api/grocery', function(req, res){
     Grocery.findAll().then((results) => {
         res.setHeader('Content-Type', 'application/json');
@@ -85,7 +85,6 @@ app.get('/api/grocery', function(req, res){
     });      
 });
 
-//POST /api/todo
 app.post('/api/todo', function (req, res) {
     let data = {
         todoitem: req.body.todoitem
@@ -145,5 +144,3 @@ app.delete('/api/grocery/:id', function (req, res) {
 app.listen(process.env.PORT || 3000, function(){
     console.log('Posts API is now listening on Port 3000');
 });
-
-

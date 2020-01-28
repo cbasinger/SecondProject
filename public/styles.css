@@ -1,10 +1,42 @@
 body {
+    margin: 0;
+    height: 100vh;
+    font-size: 5em; 
     align-items: center !important;
 }
 
-.card {
-    flex: content;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between !important;
+.display-4 {
+    text-align: center;
 }
+
+.lead {
+    text-align: center;
+}
+
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
+  }
+  
+  .child {
+    width: 325px;  /* Or whatever */
+    margin: auto;  /* Magic! */
+    border-radius: 25px;
+    border: 2px solid lightgray;
+    padding: 10px;
+    margin: 5px 5px;
+  }
+
+/*.card-group {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+}*/
+
