@@ -1,5 +1,6 @@
 body {
     margin: 0;
+    background-color: #FFF4F4;
     height: 100vh;
     font-size: 5em; 
     align-items: center !important;
@@ -37,8 +38,8 @@ body {
 
 .parent {
     background-color: #DFA925;
-    width: 80%;
-    
+    width: 90%;
+    margin: 40px auto;
     display: flex;
     
     align-items: center;
