@@ -49,6 +49,8 @@ body {
     width: 325px;  /* Or whatever */
     margin: auto;  /* Magic! */
     background-color: #FEEACC;
+    font-family: 'Playfair Display', serif;
+    color: #093128;
     border-radius: 25px;
     border: 2px solid lightgray;
     padding: 10px;
