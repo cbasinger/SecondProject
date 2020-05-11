@@ -47,7 +47,8 @@ body {
   }
   
   .child {
-    width: 325px;  /* Or whatever */
+    width: 325px; 
+    height: 90%; /* Or whatever */
     margin: auto;  /* Magic! */
     background-color: #FEEACC;
     font-family: 'Playfair Display', serif;
