@@ -46,12 +46,13 @@ if (process.env.DATABASE_URL) {
 }
 
 const app = express();
+app.use('/public', express.static('public'));
 app.use(cors());
 app.use(cookieParser())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');
-app.use('/public', express.static('public'));
+
 
 
 
