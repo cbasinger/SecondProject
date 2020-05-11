@@ -3,31 +3,67 @@ body {
     height: 100vh;
     font-size: 5em; 
     align-items: center !important;
+    justify-content: center;
+}
+
+.header {
+    background-color: #F8B9A3 !important;
+    height: 200px;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    padding: 40px 20px;
 }
 
 .display-4 {
+    font-family: 'Abril Fatface', cursive;
     text-align: center;
-}
+    color: #FDF6E6;
 
-.lead {
+}
+/* .tag-box {
+    height: 35px;
+    background-color: #DFA925;
+    width: 50%;
+} */
+
+.tag {
+    
+    font-family: 'Abril Fatface', cursive;
+    font-size: 20px;
     text-align: center;
+    color: #093128;
 }
 
 .parent {
+    background-color: #DFA925;
+    width: 80%;
+    
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: space-evenly;
+    
+    align-items: center;
+    justify-content: center;
   }
   
   .child {
     width: 325px;  /* Or whatever */
     margin: auto;  /* Magic! */
+    background-color: #FEEACC;
     border-radius: 25px;
     border: 2px solid lightgray;
     padding: 10px;
     margin: 5px 5px;
-  }
+    box-shadow: 0 2px 3px 2px #6a6a6a;    
+    opacity: 0.9;
+    
+}
+
+.card-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    color: #093128;
+
+}
 
 /*.card-group {
     list-style-type: none;
